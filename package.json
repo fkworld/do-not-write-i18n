@@ -2,23 +2,35 @@
   "name": "do-not-write-i18n",
   "version": "0.0.1",
   "type": "module",
+  "main": "dist/main.js",
+  "module": "dist/main.js",
+  "types": "dist/main.d.ts",
   "author": "fkworld",
   "license": "MIT",
+  "keywords": [
+    "fkworld",
+    "i18n",
+    "do-not-write-i18n"
+  ],
+  "files": [
+    "dist/*"
+  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fkworld/fkworld-cli.git"
+    "url": "git+https://github.com/fkworld/do-not-write-i18n.git"
   },
-  "homepage": "https://github.com/fkworld/fkworld-cli#readme",
+  "homepage": "https://github.com/fkworld/do-not-write-i18n#readme",
   "bugs": {
-    "url": "https://github.com/fkworld/fkworld-cli/issues"
+    "url": "https://github.com/fkworld/do-not-write-i18n/issues"
   },
   "scripts": {
     "prepare": "husky install",
     "test": "vitest",
+    "build": "rm -rf dist && tsc",
     "lint:ls-lint": "ls-lint",
     "lint:commitlint": "commitlint",
     "lint:lint-staged": "lint-staged",
-    "lint:tsc": "tsc"
+    "lint:tsc": "tsc --noEmit"
   },
   "dependencies": {
     "typescript": "^5.1.3"
