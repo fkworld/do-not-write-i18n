@@ -13,7 +13,8 @@
     "do-not-write-i18n"
   ],
   "files": [
-    "dist/*"
+    "dist/main.js",
+    "dist/main.d.ts"
   ],
   "repository": {
     "type": "git",
