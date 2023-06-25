@@ -8,11 +8,20 @@
 2. 划分。给每个配置划分到一个文件中。
 3. 复制粘贴。把每个配置的 key 复制粘贴至少 3 遍：中文配置一遍，英文配置一遍，调用处一遍。
 
+更重要的是，这些不必要的心智成本，会打断编程思路，进而打破编程时的**心流**。所以很多人会采用以下前置或者后置写法：
+
+1. 前置：在开发前先把 i18n 文件写完，开发时直接使用。
+2. 后置：开发时不管，开发后统一补充 i18n。
+
 为了减少心智成本，优化成以下规则：
 
 1. 不起名。直接拿中文 or 英文作为 key。
 2. 不划分。直接用一个文件存放所有的 key。
 3. 不复制粘贴。提供一些简单的命令实现自动化。
+
+基于以上规则，可以大大减少心智负担，进而减少打破心流的情况。
+
+基于以上规则，发布一个包，命名为：**DO NOT WRITE I18N**，以提醒大家，不要在不必要的事情上浪费精力。
 
 ## 实现原理
 
@@ -24,16 +33,4 @@
 2. 默认语言 value。
 3. key。
 
-## API
-
-```ts
-function init<TKey extends string>(options: {
-  defaultLanguage: "en" | "zh";
-  languageLocalStorageKey: string;
-  languageConfig: Record<TKey, { en?: string; zh?: string }>;
-}): {
-  getLanguage(): "en" | "zh";
-  setLanguage(newLanguage: "en" | "zh"): void;
-  t(key: TKey, params?: Record<string, any>): string;
-};
-```
+实现代码参考：[src/main.ts](src/main.ts)

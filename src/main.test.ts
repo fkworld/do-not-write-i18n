@@ -1,15 +1,16 @@
-import { init } from "src/main.js";
+import { createDoNotWriteI18n } from "src/main.js";
 import { describe, expect, it } from "vitest";
 
 describe("do-not-write-i18n", () => {
-  const { getLanguage, setLanguage, t } = init({
+  const { getLanguage, setLanguage, t } = createDoNotWriteI18n({
+    languages: ["en", "zh"],
     defaultLanguage: "en",
-    languageLocalStorageKey: "language",
-    languageConfig: {
+    messages: {
       hello: {},
       "hello world": { zh: "你好，世界" },
       "hello {name}": { zh: "你好，{name}" },
     },
+    localStorageKey: "language",
   });
 
   describe(getLanguage.name, () => {
@@ -21,6 +22,14 @@ describe("do-not-write-i18n", () => {
   describe(setLanguage.name, () => {
     it("should set language", () => {
       setLanguage("zh");
+      expect(getLanguage()).toBe("zh");
+    });
+
+    it("should throw error when language is not supported", () => {
+      setLanguage("zh");
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
+      expect(() => setLanguage("jp")).toThrowError();
       expect(getLanguage()).toBe("zh");
     });
   });
