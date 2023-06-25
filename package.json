@@ -27,6 +27,7 @@
   "scripts": {
     "prepare": "husky install",
     "test": "vitest",
+    "test:command": "rm -rf dist && tsc && node ./dist/commands/main.js",
     "build": "rm -rf dist && tsc",
     "lint:ls-lint": "ls-lint",
     "lint:commitlint": "commitlint",
@@ -50,5 +51,9 @@
     "typescript": "^5.1.3",
     "vite-tsconfig-paths": "^4.2.0",
     "vitest": "^0.32.2"
+  },
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "commander": "^11.0.0"
   }
 }
