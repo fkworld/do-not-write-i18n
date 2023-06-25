@@ -1,5 +1,6 @@
-import { createDoNotWriteI18n } from "src/main.js";
 import { describe, expect, it } from "vitest";
+
+import { createDoNotWriteI18n } from "./main.js";
 
 describe("do-not-write-i18n", () => {
   const { getLanguage, setLanguage, t } = createDoNotWriteI18n({
